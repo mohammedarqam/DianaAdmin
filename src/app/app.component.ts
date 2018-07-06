@@ -22,6 +22,7 @@ export class MyApp {
       { title: 'Home', component: "HomePage", icon: "home" },
       { title: 'Food Menu', component: "MenuPage", icon: "home" },
       { title: 'Smoke Menu', component: "SmokeMenuPage", icon: "home" },
+      { title: 'Loyal Customers', component: "LoyalCustomersPage", icon: "home" },
 
 
     ];
