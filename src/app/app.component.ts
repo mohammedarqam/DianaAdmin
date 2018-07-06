@@ -1,15 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 
-import { HomePage } from '../pages/home/home';
-import * as firebase from 'firebase';
+
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "LoginPage";
+  rootPage: any = "HomePage";
   activePage: any;
 
 
@@ -19,7 +19,9 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: HomePage, icon: "home" },
+      { title: 'Home', component: "HomePage", icon: "home" },
+      { title: 'Food Menu', component: "MenuPage", icon: "home" },
+      { title: 'Smoke Menu', component: "SmokeMenuPage", icon: "home" },
 
 
     ];
@@ -41,15 +43,5 @@ export class MyApp {
     return page == this.activePage;
   }
 
-  signOut() {
-/*    firebase.auth().signOut().then(() => {
-      this.nav.setRoot(MainLoginPage);
-    }).catch((error) => {
-      console.log(error.message);
-    });
-  */
- this.nav.setRoot("LoginPage");
- 
-}
 
 }

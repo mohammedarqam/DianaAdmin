@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar color="primary" >
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Add Smoke Item</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+
+
+<ion-content padding>
+
+<ion-item>
+  <ion-label floating>Smoke Item Name</ion-label>
+  <ion-input type="text" autofocus [(ngModel)]="itemName"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Price</ion-label>
+  <ion-input type="number" [(ngModel)]="itemPrice" ></ion-input>
+</ion-item>
+
+<button ion-button block (click)="addItem()">Add Item</button>
+
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Food Menu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+    <ion-card *ngFor="let item of menuItems">
+      <ion-card-content>
+        <ion-card-title>
+            {{item.Name}}
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+
+
+
+<ion-fab bottom right>
+  <button ion-fab icon-only color="danger" [navPush]="AddMenu" >
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
+
+
+
+  
+</ion-content>
