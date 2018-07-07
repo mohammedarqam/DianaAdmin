@@ -10,5 +10,12 @@
 
 <ion-content padding>
 
+  <ion-card *ngFor = "let user of users">
+    <ion-card-content>
+      <ion-card-title>
+        {{user.Name}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

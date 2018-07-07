@@ -9,10 +9,17 @@ import * as firebase from 'firebase';
 })
 export class LoyalCustomersPage {
 
+  userRef= firebase.database().ref("Users/");
+  public users : Array<any> = [];
+
   constructor(
   public navCtrl: NavController,
   public loadingCtrl : LoadingController, 
   public navParams: NavParams) {
+  }
+
+  ionViewDidEnter(){
+    this.getUsers();
   }
 
   getUsers(){
@@ -20,6 +27,14 @@ export class LoyalCustomersPage {
       content: 'Please wait...'
     });
     loading.present();
-    loading.dismiss();
+    this.userRef.once('value', itemSnapshot => {
+      this.users = [];
+      itemSnapshot.forEach(itemSnap => {
+        this.users.push(itemSnap.val());
+        return false;
+      });
+    }).then(()=>{
+      loading.dismiss();
+    }) ;
   }
 }
