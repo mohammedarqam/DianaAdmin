@@ -4,6 +4,12 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>Diana Admin</ion-title>
+      
+      <ion-buttons end>
+        <button ion-button clear icon-only (click)="gtOrdersPending()">
+          <ion-icon name="md-stopwatch"></ion-icon>
+        </button>
+      </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -14,20 +20,49 @@
 
 <ion-grid>
 <ion-row>
-<ion-col col-6>
+<ion-col col-md-6>
   <ion-card padding>
     <ion-card-content>
       <ion-item>
         <ion-icon name="ios-person" class="iconsize" color="primary" item-start></ion-icon>
-        <h2>Total Users</h2>
+        <h2>Customers</h2>
             </ion-item>
             <ion-item class="mainCur">
           <h1>{{totUsers}}</h1>
-          <h1>Users</h1>
       </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-col>
+
+<ion-col col-md-6>
+    <ion-card padding>
+      <ion-card-content>
+        <ion-item>
+          <ion-icon name="ios-person" class="iconsize" color="primary" item-start></ion-icon>
+          <h2>Food Items</h2>
+              </ion-item>
+              <ion-item class="mainCur">
+            <h1>{{totFoodItems}}</h1>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+  
+  <ion-col col-md-6>
+      <ion-card padding>
+        <ion-card-content>
+          <ion-item>
+            <ion-icon name="ios-person" class="iconsize" color="primary" item-start></ion-icon>
+            <h2>Smoke Items</h2>
+                </ion-item>
+                <ion-item class="mainCur">
+              <h1>{{totSmokeItems}}</h1>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    
 
 </ion-row>
 </ion-grid>

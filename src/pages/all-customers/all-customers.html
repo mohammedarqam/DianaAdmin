@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>All Customers</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-card *ngFor = "let user of users">
+  <ion-card-content>
+    <ion-card-title>
+      {{user.Name}}
+    </ion-card-title>
+    Status : {{user.Loyalty}}
+  </ion-card-content>
+</ion-card>
+
+</ion-content>

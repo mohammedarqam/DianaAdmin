@@ -15,9 +15,10 @@
 
     <ion-card *ngFor="let item of menuItems">
       <ion-card-content>
-        <ion-card-title>
-            {{item.Name}}
-        </ion-card-title>
+        <ion-item>
+          <h1 ion-text item-start>{{item.Name}} </h1>
+          <h1 ion-text item-end color="primary">Rs. {{item.Price}} </h1>
+        </ion-item>
       </ion-card-content>
     </ion-card>
 

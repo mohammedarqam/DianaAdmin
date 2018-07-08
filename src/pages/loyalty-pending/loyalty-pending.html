@@ -3,7 +3,7 @@
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Loyal Customers</ion-title>
+      <ion-title>Loyalty Pending</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,8 @@
         {{user.Name}}
       </ion-card-title>
       <ion-buttons end>
-        <button ion-button color="danger" (click)="revoke(user.key)">Revoke Loyalty</button>
+        <button ion-button color="danger" (click)="reject(user.key)">Reject</button>
+        <button ion-button color="primary" (click)="approve(user.key)">Approve</button>
       </ion-buttons>
     </ion-card-content>
   </ion-card>

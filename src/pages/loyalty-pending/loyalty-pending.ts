@@ -2,20 +2,22 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
+
+
 @IonicPage()
 @Component({
-  selector: 'page-loyal-customers',
-  templateUrl: 'loyal-customers.html',
+  selector: 'page-loyalty-pending',
+  templateUrl: 'loyalty-pending.html',
 })
-export class LoyalCustomersPage {
+export class LoyaltyPendingPage {
 
   userRef= firebase.database().ref("Users/");
   public users : Array<any> = [];
 
   constructor(
   public navCtrl: NavController,
-  public toastCtrl : ToastController,
   public loadingCtrl : LoadingController, 
+  public toastCtrl : ToastController,
   public navParams: NavParams) {
   }
 
@@ -33,7 +35,7 @@ export class LoyalCustomersPage {
       itemSnapshot.forEach(itemSnap => {
         var temp  = itemSnap.val();
         temp.key = itemSnap.key;
-        if(temp.Loyalty == "Loyal"){
+        if(temp.Loyalty == "Pending"){
         this.users.push(temp);
         }
         return false;
@@ -43,13 +45,25 @@ export class LoyalCustomersPage {
     }) ;
   }
 
-  revoke(key){
+
+  approve(key){
+    this.userRef.child(key+"/Loyalty/").once('value',snapshot =>{
+      console.log(snapshot.val());
+    }).then(()=>{
+      this.userRef.child(key+"/Loyalty/").set("Loyal").then(()=>{
+        this.getUsers();
+        this.presentToast("Customer made Loyal");
+      });
+    });
+    }
+
+  reject(key){
     this.userRef.child(key+"/Loyalty/").once('value',snapshot =>{
       console.log(snapshot.val());
     }).then(()=>{
       this.userRef.child(key+"/Loyalty/").set("Rejected").then(()=>{
-        this.presentToast("Customer's Loyalty Revoked");
         this.getUsers();
+        this.presentToast("Customer rejected from Loyalty");
       });
     });
 
@@ -64,6 +78,10 @@ export class LoyalCustomersPage {
   
     toast.present();
   }
+  
 
 
 }
+
+
+

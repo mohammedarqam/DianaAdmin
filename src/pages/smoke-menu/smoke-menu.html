@@ -15,10 +15,11 @@
   
       <ion-card *ngFor="let item of smokeItems">
         <ion-card-content>
-          <ion-card-title>
-              {{item.Name}}
-          </ion-card-title>
-        </ion-card-content>
+            <ion-item>
+                <h1 ion-text item-start>{{item.Name}} </h1>
+                <h1 ion-text item-end color="primary">Rs. {{item.Price}} </h1>
+              </ion-item>
+              </ion-card-content>
       </ion-card>
   
   

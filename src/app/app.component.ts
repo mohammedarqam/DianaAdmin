@@ -20,9 +20,11 @@ export class MyApp {
 
     this.pages = [
       { title: 'Home', component: "HomePage", icon: "home" },
-      { title: 'Food Menu', component: "MenuPage", icon: "home" },
-      { title: 'Smoke Menu', component: "SmokeMenuPage", icon: "home" },
-      { title: 'Loyal Customers', component: "LoyalCustomersPage", icon: "home" },
+      { title: 'Food Menu', component: "MenuPage", icon: "pizza" },
+      { title: 'Smoke Menu', component: "SmokeMenuPage", icon: "no-smoking" },
+      { title: 'Customers', component: "CtabsPage", icon: "ios-people" },
+      { title: 'Orders', component: "OrdersTabPage", icon: "md-mail" },
+      { title: 'Balance Sheet', component: "BalanceSheetPage", icon: "ios-stats" },
 
 
     ];
