@@ -55,6 +55,23 @@ export class LoyalCustomersPage {
 
   }
 
+
+  makePending(key){
+    this.userRef.child(key+"/Loyalty/").once('value',snapshot =>{
+      console.log(snapshot.val());
+    }).then(()=>{
+      this.userRef.child(key+"/Loyalty/").set("Pending").then(()=>{
+        this.presentToast("Customer's Loyalty set to Pending");
+        this.getUsers();
+      });
+    });
+
+  }
+
+
+
+
+
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,

@@ -16,6 +16,7 @@
         {{user.Name}}
       </ion-card-title>
       <ion-buttons end>
+        <button ion-button  (click)="makePending(user.key)">Make Pending</button>
         <button ion-button color="danger" (click)="revoke(user.key)">Revoke Loyalty</button>
       </ion-buttons>
     </ion-card-content>
