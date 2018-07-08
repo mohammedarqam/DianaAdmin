@@ -12,8 +12,10 @@ import * as firebase from 'firebase';
 export class SmokeMenuPage {
 
   AddSmoke = "AddSmokePage";
+
   menuRef= firebase.database().ref("Smoke Menu/");
   public smokeItems : Array<any> = [];
+
   constructor(
   public navCtrl: NavController,
   public loadingCtrl : LoadingController,

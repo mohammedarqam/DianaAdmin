@@ -9,4 +9,9 @@
 
 <ion-content padding>
 
+
+  <ion-card *ngFor="let order of orders" (click)="orderDetails(order.Items)" >
+      {{order.key}}
+  </ion-card>
+
 </ion-content>

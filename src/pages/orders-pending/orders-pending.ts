@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the OrdersPendingPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,46 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrdersPendingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ordersRef= firebase.database().ref("Orders/");
+  public orders : Array<any> = [];
+  public oitems : Array<any> = [];
+
+
+  constructor(
+  public navCtrl: NavController,
+  public loadingCtrl : LoadingController,
+  public toastCtrl : ToastController, 
+  public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OrdersPendingPage');
+  ionViewDidEnter(){
+    this.getOrders();
   }
 
-}
+  getOrders(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    this.ordersRef.once('value', itemSnapshot => {
+      this.orders = [];
+      itemSnapshot.forEach(itemSnap => {
+        var temp = itemSnap.val();
+        temp.key = itemSnap.key;
+        this.orders.push(temp);
+        return false;
+      });
+    }).then(()=>{
+      loading.dismiss();
+    }) ;
+  }
+
+  orderDetails(items){
+    this.navCtrl.push("OrderDetailsPage",{items : items});
+  }
+
+  }
+
+
+
+
